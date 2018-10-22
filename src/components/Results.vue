@@ -8,21 +8,23 @@
     </p>
 
     <ul>
-      <li class="movie-item" v-for="movie in results"><!-- TODO: Use a for loop to iterate through each result in the results array. -->
-        <img v-bind:src="'https://image.tmdb.org/t/p/w150_and_h225_bestv2' + movie.poster_path" v-bind:alt="movie.title" class="poster-image"><!-- TODO: Combine base URL with poster_path value in data to make the image src URL (Hint: Use v-bind.). -->
-        <h2 class="title"><a v-bind:href="'https://www.themoviedb.org/movie/' + movie.id">{{ movie.title }}</a></h2><!-- TODO: Combine base URL with movie ID value in data to make the link href URL (Hint: Use v-bind.). -->
+      <li class="movie-item" v-for="movie in results">    
+
+        <img v-bind:src="'https://image.tmdb.org/t/p/w150_and_h225_bestv2' + movie.poster_path" v-bind:alt="movie.title" class="poster-image">
+        <h2 class="title"><a v-bind:href="'https://www.themoviedb.org/movie/' + movie.id">{{ movie.title }}</a></h2>
         <div class="ratings">
-          <span class="rating-category critics-choice" v-if="movie.vote_average > 8">Critic's Choice</span><!-- TODO: Use a conditional to determine if the vote_average is over 8. -->
-          <span class="rating-category well-liked" v-else-if="movie.vote_average > 7">Well Liked</span><!-- TODO: Use a conditional to determine if the vote_average is between 7 and 8. -->
-          <span class="rating-category stinker" v-else>Stinker</span><!-- TODO: Use a conditional to determine if the vote_average is under 7. -->
-          <span class="vote-average">{{ movie.vote_average }}</span> with <span class="vote-count">{{ movie.vote_count }}</span> votes <!-- TODO: Fill in the vote_average and vote_count values accordingly. -->
+          <span class="rating-category critics-choice" v-if="movie.vote_average > 8">Critic's Choice</span>
+          <span class="rating-category very-popular" v-else-if="movie.vote_average > 7.5">Very Popular</span>
+          <span class="rating-category well-liked" v-else-if="movie.vote_average > 7">Well Liked</span>
+          <span class="rating-category stinker" v-else>Stinker</span>
+          <span class="vote-average">{{ movie.vote_average }}</span> with <span class="vote-count">{{ movie.vote_count }}</span> votes 
         </div>
-        <p class="overview"><!-- TODO: Fill in the movie overview from the data. -->
+        <p class="overview">
           {{ movie.overview }} 
         </p>
-        <p class="release-date">Original Release: {{ movie.release_date }}</p><!-- TODO: Fill in the release date from the data. -->
-        <ul class="genre-list"><!-- TODO: Use a loop to iterate through all of the genres for this movie. -->
-          <li v-for="genre in movie.genres">{{ genre }}</li><!-- TODO: Fill in the genre name from the data. -->
+        <p class="release-date">Original Release: {{ movie.release_date }}</p>
+        <ul class="genre-list">
+          <li v-for="genre in movie.genres">{{ genre }}</li>
         </ul>
       </li>
     </ul>
@@ -84,8 +86,12 @@ ul {
   background: goldenrod;
 }
 
-.rating-category.well-liked {
+.rating-category.very-popular {
   background: green;
+}
+
+.rating-category.well-liked {
+  background: blueviolet;
 }
 
 .rating-category.stinker {
