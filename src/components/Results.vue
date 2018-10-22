@@ -9,7 +9,6 @@
 
     <ul>
       <li class="movie-item" v-for="movie in results">    
-
         <img v-bind:src="'https://image.tmdb.org/t/p/w150_and_h225_bestv2' + movie.poster_path" v-bind:alt="movie.title" class="poster-image">
         <h2 class="title"><a v-bind:href="'https://www.themoviedb.org/movie/' + movie.id">{{ movie.title }}</a></h2>
         <div class="ratings">
@@ -80,7 +79,6 @@ ul {
   padding: 0.5rem;
   border-radius: 4px;
 }
-
 
 .rating-category.critics-choice {
   background: goldenrod;
